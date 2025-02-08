@@ -139,8 +139,8 @@ p {
 }
 .navbar-brand em {
 	font-style: normal;
-	color: #f7c552;
-	font-size: 32px;
+	color: #7F54B3;
+	font-size: 30px;
 }
 .header.active .navbar-brand {
 	color: #121212!important;
@@ -159,6 +159,7 @@ p {
 .page-section {
     padding: 80px 0;
 }
+
 .navbar-inverse .navbar-toggle {
 	margin-top: 22px;
     border-color: #f7c552;
@@ -167,7 +168,6 @@ p {
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
 	background-color: #f7c552;
 }
-bootstrap.min.css: 5;
 .navbar-toggle {
     position: relative;
     float: right;
@@ -180,6 +180,7 @@ bootstrap.min.css: 5;
     border: 1px solid transparent;
     border-radius: 4px;
 }
+
 @media (min-width: 768px) {
     .header .navbar-brand {
         padding-left: 0;
@@ -334,6 +335,14 @@ bootstrap.min.css: 5;
 #portfolio .container {
 	padding-top: 30px;
 }
+#portfolio .container .row{
+	display: flex;
+	flex-wrap: wrap;
+}
+#portfolio .container .row {
+	display: flex;
+	flex-wrap: wrap;
+}
 #portfolio .section-heading {
 	padding-top: 200px;
 	padding-bottom: 200px;
@@ -393,16 +402,7 @@ bootstrap.min.css: 5;
 }
 .single-service-item h2 a span {text-transform:  lowercase;}
 .single-service-item p {padding-bottom: 35px;text-transform: initial;position: relative;}
-.single-service-item p:before {
-    position: absolute;
-    content: "";
-    width: 20px;
-    height: 3px;
-    background: #3030ea;
-    bottom: 0;
-    left: 50%;
-    margin-left: -10px;
-}
+
 
 .single-service-icon [class^="flaticon-"]:before,.single-service-icon[class*=" flaticon-"]:before,.single-service-icon [class^="flaticon-"]:after,.single-service-icon [class*=" flaticon-"]:after {font-size:60px;}
 .single-service-item:hover .single-service-icon [class^="flaticon-"]:before,.single-service-item:hover .single-service-icon [class*=" flaticon-"]:before,.single-service-item:hover .single-service-icon [class^="flaticon-"]:after,.single-service-item:hover .single-service-icon [class*=" flaticon-"]:after {color:#fff;}
@@ -411,6 +411,24 @@ bootstrap.min.css: 5;
 .single-service-item:hover h2 a,.single-service-item:hover p{color: #fff;}
 .single-service-item:hover  p:before {background: #fff;}
 .single-service-item:hover{box-shadow: 0 12px 30px 0px rgba(0,1,193,.2);background: #4e4ffa;border: 1px solid #4e4ffa;}
+
+
+@media (max-width: 768px) {
+    #portfolio .container .row {
+        justify-content: center; /* Центрируем карточки */
+    }
+
+    #portfolio .col-sm-6 {
+        width: 100%;       /* Занимает всю доступную ширину */
+        max-width: 100%;   /* Ограничиваем максимальную ширину */
+        padding: 0 15px;   /* Добавляем небольшие отступы */
+        box-sizing: border-box; /* Учитываем padding в ширине */
+    }
+
+    .single-service-item {
+        margin-bottom: 20px; /* Уменьшаем отступы между карточками */
+    }
+}
 
 
 
@@ -665,6 +683,17 @@ footer .contact-info ul li {
 	font-weight: 300;
 	margin-bottom: -15px;
 }
+footer .contact-info ul a {
+	font-size: 13px;
+	color: #fff;
+	display: inline-block;
+	line-height: 24px;
+	letter-spacing: 0.5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-weight: 300;
+	margin-bottom: -15px;
+}
 
 footer .contact-info ul li em {
 	font-style: normal;
@@ -842,6 +871,7 @@ footer .connect-us ul li a:hover {
 	grid-template-columns: 1fr 30px 30px 30px 30px 30px 1fr;
 	align-items: center;
 	justify-items: center;
+	z-index: 2;
   }
   
   main#top-g {
@@ -862,9 +892,10 @@ footer .connect-us ul li a:hover {
   }
   
   div.item {
+	z-index: 10;
 	position: absolute;
-	width: 300px;
-	height: 400px;
+	width: 560px;
+	height: 315px;
 	--r: calc(var(--position) - var(--offset));
 	--abs: max(calc(var(--r) * -1), var(--r));
 	transition: all 0.25s linear;
@@ -872,7 +903,11 @@ footer .connect-us ul li a:hover {
 	  translateX(calc(-300px * var(--r)));
 	z-index: calc((var(--position) - var(--abs)));
   }
-  
+  div.item iframe{
+	
+	pointer-events: auto;
+
+  }
   div.item:nth-of-type(1) {
 	--offset: 1;
   }
